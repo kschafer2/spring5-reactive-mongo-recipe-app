@@ -31,8 +31,6 @@ public class UnitOfMeasureReactiveRepositoryTest {
 
         unitOfMeasureReactiveRepository.save(unitOfMeasure).block();
 
-        Long count = unitOfMeasureReactiveRepository.count().block();
-
         assertEquals(Long.valueOf(1L), unitOfMeasureReactiveRepository.count().block());
     }
 
