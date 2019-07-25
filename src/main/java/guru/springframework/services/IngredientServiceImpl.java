@@ -101,7 +101,9 @@ public class IngredientServiceImpl implements IngredientService {
             //todo check for fail
 
             //enhance with id value
-            IngredientCommand ingredientCommandSaved = ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+            IngredientCommand ingredientCommandSaved =
+                    ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+
             ingredientCommandSaved.setRecipeId(recipe.getId());
 
             return Mono.just(ingredientCommandSaved);
@@ -130,7 +132,7 @@ public class IngredientServiceImpl implements IngredientService {
                 log.debug("found Ingredient");
 
                 recipe.getIngredients().remove(ingredientOptional.get());
-                recipeReactiveRepository.save(recipe).block();
+                recipeReactiveRepository.save(recipe);
             }
         } else {
             log.debug("Recipe Id Not found. Id:" + recipeId);
